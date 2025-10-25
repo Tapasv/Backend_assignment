@@ -6,6 +6,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const authUser = require('./routes/authUser')
 const authVoucher = require('./routes/authVoucher')
+const authProduct = require('./routes/authProduct')
 
 
 const port = 5000
@@ -17,6 +18,7 @@ app.use(cors('http://localhost:5173'))
 
 app.use('/api/auth', authUser)
 app.use('/api/voucher', authVoucher)
+app.use('/api/products', authProduct)
 
 mongoose.connection.once('open', () => {
     console.log("Connected to DB")

@@ -50,7 +50,7 @@ router.post('/login', async (req, res) => {
         const Accesstoken = jwt.sign(
             { userID: user._id, role: user.role},
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '15m' }
+            { expiresIn: '30d' }
         )
         const Refreshtoken = jwt.sign(
             { userID: user._id, role: user.role},
@@ -88,7 +88,7 @@ router.post('/refresh', async (req, res) => {
             const Accesstoken = jwt.sign(
                 { userID: user._id, role: user.role },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: '15m' }
+                { expiresIn: '30d' }
             )
 
             res.json({ Accesstoken })

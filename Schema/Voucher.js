@@ -41,6 +41,45 @@ const VoucherSchema = new mongoose.Schema(
             type: String,
             default: ''
         }
+
+        ,
+        originalOwner: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            default: null
+        },
+        sharedWith: [{
+            userId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User'
+            },
+            sharedAt: {
+                type: Date,
+                default: Date.now
+            }
+        }],
+        isShared: {
+            type: Boolean,
+            default: false
+        },
+        canBeShared: {
+            type: Boolean,
+            default: true
+        }
+        ,
+        applicableProducts: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product'
+        }],
+        minPurchaseAmount: {
+            type: Number,
+            default: 0,
+            min: 0
+        },
+        maxDiscountAmount: {
+            type: Number,
+            default: null
+        }
     },
     {
         timestamps: true
